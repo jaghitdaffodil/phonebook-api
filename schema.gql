@@ -1,0 +1,58 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type PhoneNumber {
+  id: Int!
+  number: String!
+}
+
+type Contact {
+  id: Int!
+  firstName: String!
+  lastName: String!
+  nickName: String
+  phoneNumbers: [PhoneNumber!]!
+  address: String
+}
+
+type Contacts {
+  total: Int!
+  limit: Int!
+  offset: Int!
+  hasNext: Boolean!
+  hasPrevious: Boolean!
+  data: [Contact!]!
+}
+
+type Query {
+  contact(id: Int!): Contact!
+  contacts(limit: Int!, offset: Int!, sortBy: String!, order: String!, search: String): Contacts!
+}
+
+type Mutation {
+  createContact(contact: CreateContactInput!): Contact!
+  updateContact(contact: UpdateContactInput!): Boolean!
+  deleteContact(contact: DeleteContactInput!): Boolean!
+}
+
+input CreateContactInput {
+  firstName: String!
+  lastName: String!
+  nickName: String
+  phoneNumbers: [String!]!
+  address: String
+}
+
+input UpdateContactInput {
+  id: Int!
+  firstName: String!
+  lastName: String!
+  nickName: String
+  phoneNumbers: [String!]!
+  address: String
+}
+
+input DeleteContactInput {
+  id: Int!
+}
